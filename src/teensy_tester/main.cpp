@@ -52,15 +52,17 @@ void setup()
 
 void loop()
 {
-  // wait in cycle
-  cycleWait(framerate);
+  const int error = node->spinOnce();
+  // // wait in cycle
+  // cycleWait(framerate);
 
-  // do some CAN stuff
-  cycleNode(node);
+  // // do some CAN stuff
+  // cycleNode(node);
 
   // publish messages
-  cyclePublisher(50);
+  // cyclePublisher(50);
+  cyclePublisherIMU(50);
 
-  // toggle heartbeat
-  toggleHeartBeat();
+  // // toggle heartbeat
+  // toggleHeartBeat();
 }
