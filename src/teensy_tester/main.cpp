@@ -8,7 +8,7 @@
 static constexpr uint32_t nodeID = 100;
 static constexpr uint8_t swVersion = 1;
 static constexpr uint8_t hwVersion = 1;
-static const char* nodeName = "org.phoenix.example_node";
+static const char* nodeName = "test_IMU_node";
 
 
 // application framerate
