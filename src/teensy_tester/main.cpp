@@ -5,7 +5,7 @@
 #include "parameter.hpp"
 
 // Node settings
-static constexpr uint32_t nodeID = 100;
+static constexpr uint32_t nodeID = 120;
 static constexpr uint8_t swVersion = 1;
 static constexpr uint8_t hwVersion = 1;
 static const char* nodeName = "test_IMU_node";
@@ -33,17 +33,18 @@ void setup()
   // init publisher
   initPublisher(node);
 
-  // init subscriber
-  initSubscriber(node);
+  // // init subscriber
+  // initSubscriber(node);
 
-  // set up filters (must be after publisher & subscriber setup!)
-  configureCanAcceptanceFilters(*node);
+  // // set up filters (must be after publisher & subscriber setup!)
+  // configureCanAcceptanceFilters(*node);
 
   // init parameter
   initParameter(node);
 
   // start up node
   node->setModeOperational();
+  delay(500);
 
   Serial.println("Setup Finished");
 }
@@ -59,8 +60,8 @@ void loop()
   // // do some CAN stuff
   // cycleNode(node);
 
-  // publish messages
-  // cyclePublisher(50);
+  // // publish messages
+  // // cyclePublisher(50);
   cyclePublisherIMU(50);
 
   // // toggle heartbeat

@@ -12,6 +12,10 @@ using namespace uavcan;
 Publisher<protocol::debug::KeyValue> *keyPublisher;
 Publisher<equipment::ahrs::RawIMU> *RawIMUPublisher;
 
+float zero = 0.0;
+// float one = 1.0;
+// float two = 2.0;
+float three = 3.0;
 
 void initPublisher(Node<NodeMemoryPoolSize> *node)
 {
@@ -69,29 +73,33 @@ void cyclePublisherIMU(const int pubFreq)
   if(lastPubIMU + MonotonicDuration::fromMSec(1000/(float)pubFreq) < systemClock->getMonotonic())
   {
     {
+      // Serial.println("Hi!");
       equipment::ahrs::RawIMU msg3;
 
-      msg3.integration_interval = 2;
+      msg3.integration_interval = three;
       
-      msg3.rate_gyro_latest[0] = 1;
-      msg3.rate_gyro_latest[1] = 2;
-      msg3.rate_gyro_latest[2] = 3;
+      msg3.rate_gyro_latest[0] = three;
+      msg3.rate_gyro_latest[1] = three;
+      msg3.rate_gyro_latest[2] = three;
 
-      msg3.rate_gyro_integral[0] = 1;
-      msg3.rate_gyro_integral[1] = 2;
-      msg3.rate_gyro_integral[2] = 3;
+      msg3.rate_gyro_integral[0] = three;
+      msg3.rate_gyro_integral[1] = three;
+      msg3.rate_gyro_integral[2] = three;
 
-      msg3.accelerometer_latest[0] = 1;
-      msg3.accelerometer_latest[1] = 2;
-      msg3.accelerometer_latest[2] = 3;
+      msg3.accelerometer_latest[0] = three;
+      msg3.accelerometer_latest[1] = three;
+      msg3.accelerometer_latest[2] = three;
 
-      msg3.accelerometer_integral[0] = 1;
-      msg3.accelerometer_integral[1] = 2;
-      msg3.accelerometer_integral[2] = 3;
+      msg3.accelerometer_integral[0] = three;
+      msg3.accelerometer_integral[1] = three;
+      msg3.accelerometer_integral[2] = three;
 
-      msg3.covariance[0] = 1;
-      msg3.covariance[1] = 2;
-      msg3.covariance[2] = 3;
+      // msg3.covariance[0] = zero;
+      /*
+      msg3.covariance[0] = three;
+      msg3.covariance[1] = three;
+      msg3.covariance[2] = three;
+      msg3.covariance[3] = three;*/
 
       //Serial.print("Trans: ");
       //Serial.println(msg.value);
