@@ -5,10 +5,10 @@
 #include "parameter.hpp"
 
 // Node settings
-static constexpr uint32_t nodeID = 120;
+static constexpr uint32_t nodeID = 89;
 static constexpr uint8_t swVersion = 1;
 static constexpr uint8_t hwVersion = 1;
-static const char* nodeName = "test_IMU_node";
+static const char* nodeName = "test_IMU_node_89";
 
 
 // application framerate
@@ -63,6 +63,7 @@ void loop()
   // // publish messages
   // // cyclePublisher(50);
   cyclePublisherIMU(50);
+  cyclePublisherCommand(1);
 
   // // toggle heartbeat
   // toggleHeartBeat();

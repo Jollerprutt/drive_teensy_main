@@ -3,11 +3,13 @@
 
 #include <uavcan/uavcan.hpp>
 #include <uavcan/protocol/debug/KeyValue.hpp>
+#include <uavcan/equipment/actuator/Command.hpp>
 #include "phoenix_can_shield.h"
 
 using namespace uavcan;
 
 Subscriber<protocol::debug::KeyValue> *keySubscriber;
+Subscriber<equipment::actuator::Command> *commandSubscriber;
 
 MonotonicTime last_time;
 
@@ -21,14 +23,29 @@ void keyMessageCallback(const uavcan::protocol::debug::KeyValue& msg)
 
 }
 
+void commandMessageCallback(const uavcan::equipment::actuator::Command& msg4)
+{
+  
+  Serial.print("Command: ");
+  
+  Serial.println(" rad");
+
+}
+
 void initSubscriber(Node<NodeMemoryPoolSize> *node)
 {
   // create a subscriber
   keySubscriber = new Subscriber<protocol::debug::KeyValue>(*node);
+  commandSubscriber = new Subscriber<equipment::actuator::Command>(*node);
 
   if(keySubscriber->start(keyMessageCallback) < 0)
   {
     Serial.println("Unable to start log message subscriber!");
+  }
+
+  if(commandSubscriber->start(commandMessageCallback) < 0)
+  {
+    Serial.println("Unable to start command message subscriber!");
   }
 }
 
